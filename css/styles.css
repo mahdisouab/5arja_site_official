@@ -46,6 +46,7 @@ h3::before{
   width:1.4rem;
   height: 2.2rem;
 }
+
 @media screen and (min-width:1024px) {
   body {
     font-size: 4rem;
@@ -64,3 +65,4 @@ h3{
 a{
   text-decoration: none;
 }
+
