@@ -1,3 +1,4 @@
+/* Typography */
 html{
   font-size: 62.5%;
 }
@@ -33,6 +34,17 @@ h3{
   font-size: 2.2rem;
   margin-top: 3rem;
   margin-bottom: 7rem;
+  color: var(--color-primary);
+  font-family: 'Source Sans Pro', sans-serif;
+
+}
+h3::before{
+  font: var(--fa-font-solid);
+  content: ' \f3c5';
+  margin-right:0.8rem ;
+  margin-left: 1rem;
+  width:1.4rem;
+  height: 2.2rem;
 }
 @media screen and (min-width:1024px) {
   body {
@@ -47,4 +59,8 @@ h2{
 h3{
   font-size: 2.2rem;
 }
+}
+/* Links */
+a{
+  text-decoration: none;
 }
