@@ -57,8 +57,11 @@ h3::before{
   color: var(--color-secondary);
   font-family: 'Source Sans Pro', sans-serif;
   cursor: pointer;
-
+  position: relative;
+  top: -1.7rem;
+  border: none;
 }
+
 @media screen and (min-width:1024px) {
   body {
     font-size: 4rem;
@@ -72,9 +75,28 @@ h2{
 h3{
   font-size: 2.2rem;
 }
+.view{
+  margin-left: 3rem;
+  position: relative;
+  top: 5.7rem;
+  left:45rem
+}
 }
 /* Links */
 a{
   text-decoration: none;
 }
 
+/* Lists */
+
+/* Inputs */
+.input {
+  outline:none;  
+  border-radius: 8px;
+  font-size: 2rem;
+  padding: 1.5rem 3.5rem;
+
+}
+::placeholder{
+  color:#9E9E9E;
+}
