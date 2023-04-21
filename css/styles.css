@@ -6,7 +6,7 @@ body {
     font-family: Poppins, sans-serif;
     color: var(--color-body);
     font-size: 3.2rem;
-    line-height:1.5; 
+    line-height:1.5;
 }
 :root{
   --color-primary:#888bfe;
@@ -115,7 +115,6 @@ a{
   display: flex;
   justify-content:space-between;
   flex-wrap:wrap;
-  
 }
 .nav__list {
   width: 100%;
@@ -134,5 +133,20 @@ a{
   color: var(--color-primary);
 }
 .nav__toggler{
-  padding: 1.5rem ;
+  padding: 1.8rem ;
+  cursor: pointer;
 }
+.collapsible--expanded .collapsible__content {
+    max-height: 100%;
+    opacity: 1;
+}
+.nav__list {
+    width: 100%;
+    margin: 0;
+}
+.collapsible__content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .3s;
+} 
