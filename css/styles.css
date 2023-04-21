@@ -122,8 +122,9 @@ a{
 
 }
 .nav__item{
-  padding: 0.5rem 2rem;
+  padding: 0.8rem 2rem;
   border-bottom: 1px solid black;
+  font-weight:bold;
 }
 .nav__item > a {
   color: black;
@@ -150,3 +151,18 @@ a{
     opacity: 0;
     transition: all .3s;
 } 
+@media screen and (min-width:768px){
+  .nav__toggler{
+    display: none;
+  }
+  .nav__list{
+    width: auto;
+    display: flex;
+    font-size: 2rem;
+    max-height: 100%;
+    opacity: 1;
+  } 
+  .nav__item{
+    border: 0;
+  }
+}
