@@ -99,4 +99,13 @@ a{
 }
 ::placeholder{
   color:#9E9E9E;
+ }
+
+ h3::before{
+  font: var(--fa-font-solid);
+  content: ' \f3c5';
+  margin-right:0.8rem ;
+  margin-left: 1rem;
+  width:1.4rem;
+  height: 2.2rem;
 }
