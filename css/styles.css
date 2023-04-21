@@ -109,3 +109,30 @@ a{
   width:1.4rem;
   height: 2.2rem;
 }
+
+/* Navigation Bar */
+.nav {
+  display: flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  
+}
+.nav__list {
+  width: 100%;
+  list-style-type:none;
+
+}
+.nav__item{
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid black;
+}
+.nav__item > a {
+  color: black;
+  transition: color .3s ;
+}
+.nav__item > a:hover{
+  color: var(--color-primary);
+}
+.nav__toggler{
+  padding: 1.5rem ;
+}
