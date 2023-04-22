@@ -154,7 +154,7 @@ a{
     opacity: 0;
     transition: all .3s;
 } 
-@media screen and (min-width:768px){
+@media screen and (min-width:845px){
   .nav__toggler{
     display: none;
   }
@@ -172,15 +172,37 @@ a{
   .nav__item{
     border: 0;
   }
-  .img{
-  height: 9.7rem;
-  width: 11.7rem;
-  margin-left: 29rem;
-}
+ 
 }
 
 .img{
   height: 8rem;
   width: 10.8rem;
-  margin-left: 14rem;
+  margin-left: 1rem;
+}
+
+@media screen and (min-width:845px){
+ .img{
+  height: 8rem;
+  width: 10rem;
+  margin-left: 20rem;
+}
+}
+
+.cta{
+  margin-left: 2rem;
+}
+button {
+  font-family: "Poppins";
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.8rem 1.6rem;
+  color: white;
+  background-color: #888bfe;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  margin-top: 1rem;
+    
 }
