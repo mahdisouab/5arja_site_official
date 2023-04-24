@@ -119,7 +119,6 @@ a{
 .nav__list {
   width: 100%;
   list-style-type:none;
-
 }
 .nav__item{
   padding: 1.6rem 2.5rem;
@@ -154,7 +153,7 @@ a{
     opacity: 0;
     transition: all .3s;
 } 
-@media screen and (min-width:845px){
+@media screen and (min-width:900px){
   .nav__toggler{
     display: none;
   }
@@ -165,9 +164,10 @@ a{
     max-height: 100%;
     opacity: 1;
     margin: 0;
-    padding-right: 20rem;
+    padding-right: 15rem;
     padding-left: 0rem;
-    padding-top: 0.5rem;
+    padding-top: 1.3rem;
+    margin-top: -0.5rem;
   } 
   .nav__item{
     border: 0;
@@ -181,12 +181,14 @@ a{
   margin-left: 1rem;
 }
 
-@media screen and (min-width:845px){
+@media screen and (min-width:900px){
  .img{
   height: 8rem;
   width: 10rem;
   margin-left: 20rem;
+  margin-top:-1rem;
 }
+
 }
 
 .cta{
@@ -205,4 +207,39 @@ button {
   transition: all 0.3s ease 0s;
   margin-top: 1rem;
     
+}
+
+.banniere{
+  display: none;
+}
+@media screen and (min-width:900px){
+.banniere{
+  display:inline;
+  max-width: 100%;
+  height: auto;
+}
+.banniere_mobile{
+  display: none;
+}
+}
+.nav__size{
+  height:0.1rem;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  top: 0;
+  left: 0;
+}
+.txt {
+  position: absolute;
+  top: 10px;
+  left: 500px;
+  width: 40rem;
+}
+.banniere_mobile{
+  
+
 }
