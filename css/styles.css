@@ -210,7 +210,16 @@ button {
 }
 
 .banniere{
-  display: none;
+  display:block ;
+}
+.txt {
+  position: absolute;
+  position: absolute;
+  top: 22%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  width: 40rem;
+  max-width: 100%;
 }
 @media screen and (min-width:1024px){
 .banniere{
@@ -245,5 +254,71 @@ button {
 
 .banniere_mobile{
   
+
+}
+.search-form{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 7px 0px 8px 16px;
+gap: 1rem;
+position: absolute;
+left: 22.6%;
+right: 29.27%;
+top: 50.15%;
+bottom: 38.4%;
+
+/* Theme/Gray 100 */
+
+background: white;
+border-radius: 8px;
+  }
+
+  #srr{
+  
+  width: 329.13px;
+  height: 33.85px;
+  outline: none;
+  flex:none;
+  order: 1;
+  flex-grow: 0;
+  border:none;
+  border-radius: 8px;
+  font-size: 12px;
+}
+  #bt{
+    /* Auto layout */
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 29px 48px;
+gap: 10px;
+
+position: absolute;
+left: 71.82%;
+right: 20.42%;
+top: 50.5%;
+bottom: 38.49%;
+
+background: #888BFE;
+border-radius: 8px;
+white-space: nowrap;
+cursor: pointer;
+  }
+#lg{
+
+color: #888BFE;
+
+height: 24.0234375px;
+width: 18px;
+left: 16px;
+top: 18.51171875px;
+border-radius: 0px;
+
+font-size:22px;
+
+/* Inside auto layout */
 
 }
