@@ -444,11 +444,15 @@ h2.title{
   font-size: 2.2rem;
 }
 .cafe{
-  height: 301px;
-  width: 357px;
+  height: 201px;
+  width: 257px;
+  padding-left: 192px;
   left: 0px;
   top: 82px;
   border-radius: 16px;
-
+  
 }
 
+.checked {
+  color: var(--color-primary);
+}
