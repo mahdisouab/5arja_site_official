@@ -76,9 +76,9 @@ h3{
 }
 .view{
   margin-left: 3rem;
-  position: relative;
-  top: 5.7rem;
-  left:45rem
+  position: absolute;
+  top: 130rem;
+  left:63rem;
 }
 }
 /* Links */
@@ -440,7 +440,7 @@ h2.title{
   text-align: center;
 }
 .nom{
-  padding-left: 1rem;
+  padding-left: 19.5rem;
   font-size: 2.2rem;
 }
 .cafe{
@@ -450,9 +450,17 @@ h2.title{
   left: 0px;
   top: 82px;
   border-radius: 16px;
-  
 }
 
 .checked {
   color: var(--color-primary);
+}
+.first{
+  padding-left: 1.5rem;
+}
+.lin{
+  display:inline ;
+}
+.location{
+  padding-left: 18.8rem;
 }
