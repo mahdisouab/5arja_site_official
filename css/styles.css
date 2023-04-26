@@ -70,9 +70,11 @@ h3::before{
 }
 h2{
   font-size: 3.2rem;
+  margin-top: 0rem;
 }
 h3{
   font-size: 1.8rem;
+  
 }
 .view{
   margin-left: 3rem;
@@ -442,6 +444,7 @@ h2.title{
 .nom{
   padding-left: 19.5rem;
   font-size: 2.2rem;
+  padding-bottom:  0rem;
 }
 .cafe{
   height: 201px;
@@ -461,6 +464,9 @@ h2.title{
 .lin{
   display:inline ;
 }
-.location{
+a.location{
   padding-left: 18.8rem;
+}
+.spc{
+top: 69%;
 }
