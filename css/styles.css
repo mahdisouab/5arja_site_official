@@ -79,7 +79,7 @@ h3{
 .view{
   margin-left: 3rem;
   position: absolute;
-  top: 130rem;
+  top: 120rem;
   left:63rem;
 }
 }
@@ -470,3 +470,31 @@ a.location{
 .spc{
 top: 69%;
 }
+
+.all{
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+}
+
+.cafe.two {
+ padding-left: 0px;
+}
+.cafe.three {
+ padding-left: 0px;
+}
+.cafe.two {
+ padding-left: 0px;
+ 
+}
+.nom.cafe.two{
+  padding-left: 0px;
+}
+.nom.cafe.four{
+  padding-left: 0px;
+}
+.two.img.cafe{
+  padding-left:0px ;
+}
+
+
