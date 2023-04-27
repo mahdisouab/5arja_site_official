@@ -521,7 +521,7 @@ top: 69%;
 .view2{
   margin-left: 3rem;
   position: absolute;
-  top: 222rem;
+  top: 220rem;
   left:58rem;
   background-color: var(--color-accent);
   border-radius: 1.4rem;
@@ -534,4 +534,53 @@ top: 69%;
   cursor: pointer;
   position: absolute;
   border: none;
+}
+
+.dj{
+  height: 21.8rem;
+  width: 21.8rem;
+  border-radius: 100%;
+}
+.name{
+  font-family: Source Sans Pro;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+
+}
+.view3{
+  margin-left: 3rem;
+  position: absolute;
+  top: 220rem;
+  left:58rem;
+  background-color: var(--color-accent);
+  border-radius: 1.4rem;
+  width: 17.6rem;
+  height: 4.7rem;
+  margin-left: 3rem;
+  font-size:1.5rem;
+  color: var(--color-secondary);
+  font-family: 'Source Sans Pro', sans-serif;
+  cursor: pointer;
+  position: absolute;
+  border: none;
+}
+.pref{
+  max-width: 100%;
+  padding-top: 15rem;
+}
+.pref1{
+  height: 38px;
+  width: 230px;
+  border-radius: 46px;
+  padding: 55px;
+  position: absolute;
+  top: 412%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  width: 40rem;
+  max-width: 100%;
+}
 }
