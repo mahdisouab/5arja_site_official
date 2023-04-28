@@ -570,17 +570,41 @@ top: 69%;
 .pref{
   max-width: 100%;
   padding-top: 15rem;
+  position: relative;
 }
 .pref1{
-  height: 38px;
-  width: 230px;
+  height: 180px;
   border-radius: 46px;
   padding: 55px;
   position: absolute;
-  top: 412%;
-  left: 49%;
+  top: 377%;
+  left: 52%;
   transform: translate(-50%, -50%);
+}
+.pref2{
+  height:42rem;
+  border-radius: 46px;
+  padding: 55px;
+  position: absolute;
+  top: 435.7%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+}
+.pref3{
+  border-radius: 46px;
+  padding: 55px;
+  position: absolute;
+  top: 427.7%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+.pref4{
   width: 40rem;
-  max-width: 100%;
+  border-radius: 46px;
+  padding: 55px;
+  position: absolute;
+  top: 417.7%;
+  left: 70%;
+  transform: translate(-50%, -50%);
 }
-}
+
