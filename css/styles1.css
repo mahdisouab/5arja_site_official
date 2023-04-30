@@ -1,0 +1,636 @@
+html{
+    font-size: 62.5%;
+    /*
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+    */
+}
+/*
+* {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  transition: all .2s linear;
+}
+*/
+body{
+    font-family: 'Baloo Bhaijaan 2', cursive;
+    color: var(--color-body);
+    font-size: 3.2rem;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #888bfe;
+    --color-secondary: white;
+    --color-accent: #393b8c;
+    --color-heading: black;
+    --color-body: black;
+  }
+
+h1,
+h2,
+h3 {
+  color: var(--color-heading);
+}
+
+h1 {
+    font-size: 4.9rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+  }
+  h2 {
+    font-size: 3.2rem;
+    margin-top: 3rem;
+  }
+  h3 {
+    font-size: 2.2rem;
+    margin-top: 3rem;
+    margin-bottom: 7rem;
+    color: var(--color-primary);
+    display: inline-block;
+  }
+  h3::before {
+    font: var(--fa-font-solid);
+    content: " \f3c5";
+    margin-right: 0.8rem;
+    margin-left: 1rem;
+    width: 1.4rem;
+    height: 2.2rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    body {
+      font-size: 4rem;
+    }
+    h1 {
+      font-size: 6.4rem;
+    }
+    h2 {
+      font-size: 3.2rem;
+      margin-top: 0rem;
+    }
+    h3 {
+      font-size: 1.8rem;
+    }
+    .view {
+      margin-left: 3rem;
+      position: absolute;
+      top: 127rem;
+      left: 58rem;
+      background-color: var(--color-accent);
+      border-radius: 1.4rem;
+      width: 17.6rem;
+      height: 4.7rem;
+      margin-left: 3rem;
+      font-size: 1.5rem;
+      color: var(--color-secondary);
+      font-family: 'Baloo Bhaijaan 2', cursive;
+      cursor: pointer;
+      position: absolute;
+      border: none;
+    }
+  }
+
+a {
+    text-decoration: none;
+}
+
+/* login button */
+
+/* lists
+.list{
+    list-style: none;
+    padding-left: 0;
+}
+
+.list--inline .list__item{
+    display: inline;
+    margin-right: 2rem;
+}
+*/
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .nav__list {
+    width: 100%;
+    list-style-type: none;
+  }
+  .nav__item {
+    padding: 1.6rem 2.5rem;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+  }
+  .nav__item > a {
+    color: black;
+    transition: color 0.3s;
+  }
+  .nav__item > a:hover {
+    color: var(--color-primary);
+  }
+  .nav__toggler {
+    padding: 1.8rem;
+    cursor: pointer;
+  }
+  .collapsible--expanded .collapsible__content {
+    max-height: 100%;
+    opacity: 1;
+  }
+  .nav__list {
+    width: 100%;
+    padding-right: 0rem;
+    padding-left: 0rem;
+    font-size: 2rem;
+  }
+  .collapsible__content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  @media screen and (min-width: 1024px) {
+    .nav__toggler {
+      display: none;
+    }
+    .nav__list {
+      width: auto;
+      display: flex;
+      font-size: 1.6rem;
+      max-height: 100%;
+      opacity: 1;
+      margin: 0;
+      padding-right: 15rem;
+      padding-left: 0rem;
+      padding-top: 1.3rem;
+      margin-top: -0.5rem;
+    }
+    .nav__item {
+      border: 0;
+    }
+  }
+  
+  .img {
+    height: 8rem;
+    width: 10.8rem;
+    margin-left: 1rem;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .img {
+      height: 8rem;
+      width: 10rem;
+      margin-left: 20rem;
+      margin-top: -1rem;
+    }
+  }
+  
+  .cta {
+    margin-left: 2rem;
+  }
+  button {
+    font-family: "Poppins";
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 0.8rem 1.6rem;
+    color: white;
+    background-color: #888bfe;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    margin-top: 1rem;
+  }
+
+.block{
+  width: 100%;
+  padding: 6%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: center;
+  gap: 3.2rem;
+}
+/*
+.hero__right{
+  display: flex;
+}
+
+.hero__right img{
+  vertical-align: middle;
+  width: 68.9rem;
+  height: 52.7rem;
+  left: 97.1rem;
+  top: 10.6rem;
+
+}
+
+.hero__left h1{
+  text-align: right;
+  position: absolute;
+  width: 54.7rem;
+  height: 15.0rem;
+  left: 24.5rem;
+  top: 31.0rem;
+}
+*/
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.content  {
+  width: 50%;
+  padding: 20px;
+  direction: rtl; /* set the direction of the text to right-to-left */
+}
+
+
+
+.content h1, .content p {
+  text-align: right; /* align the text to the right */
+  margin-right: 3rem;
+
+}
+
+.hero-image {
+  background-image: url('/images/mekla.png');
+  background-size: cover;
+  background-position: center;
+  height: 65vh;
+  width: 40%;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .hero-image {
+    width: 100%;
+    height: 50vh;
+    
+  }
+  .content {
+    width: 100%;
+    padding: 10px;
+    text-align: right; /* align the text to the right on small screens */
+  }
+}
+
+
+.place-filter{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 24px;
+  gap: 10px;
+}
+
+.btn-filter {
+  padding: 1.4rem 2.4rem;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-size: 2rem;
+  color: black;
+  background-color: white;
+}
+
+h1.title {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-size: 55px;
+  font-weight: 600;
+  line-height: 55px;
+  letter-spacing: 0em;
+  margin-right: 176px;
+  text-align: right;
+}
+
+
+.cafe {
+  height: 201px;
+  width: 257px;
+  padding-left: 192px;
+  left: 0px;
+  top: 82px;
+  border-radius: 16px;
+}
+
+.checked {
+  color: var(--color-primary);
+}
+
+.first {
+  padding-left: 1.5rem;
+}
+
+.lin {
+  display: inline;
+}
+
+a.location {
+  padding-left: 18.8rem;
+}
+
+.spc {
+  top: 69%;
+}
+
+.all {
+  display: flex;
+  justify-content: space-evenly;
+  width: 1180px;
+  padding-left: 176px;
+}
+
+.one {
+}
+
+.cafe.two {
+  padding-left: 0px;
+}
+
+.cafe.three {
+  padding-left: 0px;
+}
+
+.cafe.two {
+  padding-left: 0px;
+}
+
+.nom.cafe.two {
+  padding-left: 0px;
+}
+
+.nom.cafe.four {
+  padding-left: 0px;
+}
+
+.two.img.cafe {
+  padding-left: 0px;
+}
+
+
+  
+
+.pref {
+  max-width: 100%;
+  padding-top: 0rem;
+  position: relative;
+}
+
+.pref1 {
+  height: 19rem;
+  border-radius: 4.6rem;
+  padding: 5.5rem;
+  position: absolute;
+  top: 420%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+}
+
+.pref2 {
+  height: 42rem;
+  border-radius: 46px;
+  padding: 55px;
+  position: absolute;
+  top: 478.98%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+}
+
+.pref3 {
+  border-radius: 46px;
+  padding: 55px;
+  position: absolute;
+  top: 466%;
+  left: 70%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.pref4 {
+  width: 40rem;
+  border-radius: 46px;
+  padding: 55px;
+  position: absolute;
+  top: 458%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+footer {
+  max-width: 100%;
+  width: 1922px;
+  height: 320px;
+  background: rgb(33, 33, 33);
+  top: 508.4%;
+  position: absolute;
+  flex: 0 0 auto;
+  order: 1;
+}
+
+.insta {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 auto;
+  order: 0;
+  cursor: pointer;
+}
+
+.fb {
+  width: 23.25px;
+  height: 23.11px;
+  flex: 0 0 auto;
+  order: 1;
+  cursor: pointer;
+}
+
+.social {
+  position: absolute;
+  left: 64.5%;
+  top: 15%;
+}
+
+.city {
+  padding: 0px;
+  list-style: none;
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 0px;
+  position: absolute;
+  left: 14%;
+}
+
+.str {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgb(245, 245, 245);
+  opacity: 0.5;
+}
+
+.st {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgb(198, 190, 190);
+  opacity: 0.5;
+}
+
+thead {
+  color: rgb(255, 255, 255);
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 120%;
+}
+
+.ct {
+  color: rgb(245, 245, 245);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+  height: 30px;
+  flex: 0 0 auto;
+  order: 1;
+}
+
+.copyright {
+  position: absolute;
+  top: 55%;
+  left: 14%;
+}
+
+.tlt {
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+}
+
+.city1 {
+  padding: 0px;
+  list-style: none;
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 0px;
+  position: absolute;
+  left: 29%;
+}
+
+.ct1 {
+  color: rgb(245, 245, 245);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+  height: 30px;
+  flex: 0 0 auto;
+  order: 1;
+}
+
+.tlt1 {
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+}
+
+.city2 {
+  padding: 0px;
+  list-style: none;
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 0px;
+  position: absolute;
+  left: 41%;
+}
+
+.ct2 {
+  color: rgb(245, 245, 245);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+  height: 30px;
+  flex: 0 0 auto;
+  order: 1;
+}
+
+.tlt2 {
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+}
+
+.city3 {
+  padding: 0px;
+  list-style: none;
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 0px;
+  position: absolute;
+  left: 52%;
+}
+
+.ct3 {
+  color: rgb(245, 245, 245);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+  height: 30px;
+  flex: 0 0 auto;
+  order: 1;
+}
+
+.tlt3 {
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+}
+
+.h_line {
+  border-bottom: 1px solid rgb(80, 80, 78);
+  width: 850px;
+  margin: auto;
+  position: absolute;
+  top: 75%;
+  left: 14%;
+}
+
+.v_line {
+  border-left: 1px solid rgb(80, 80, 78);
+  height: 215px;
+  margin: 0px auto;
+  width: 2px;
+  position: absolute;
+  top: 8%;
+  left: 62%;
+}
+
+.tlt4 {
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 3%;
+  left: 63.5%;
+}

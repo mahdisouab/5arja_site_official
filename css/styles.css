@@ -538,7 +538,7 @@ a.location {
     font-size: 1.5rem;
     color: var(--color-secondary);
     font-family: "Source Sans Pro", sans-serif;
-    cursor: pointer;
+    cursor:pointer;
     position: absolute;
     border: none;
 }
