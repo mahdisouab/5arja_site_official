@@ -1,0 +1,580 @@
+---
+version: "3.4"
+services:
+  zencore:
+    image: zencore
+    network_mode: host
+    container_name: zencore
+    volumes:
+     - type: volume
+       source: commonJars
+       target: /opt/microfocus/zenworks/java/lib
+     - type: volume
+       source: resources
+       target: /opt/microfocus/zenworks/resources
+    environment:
+        TIME_ZONE: $TIME_ZONE
+        LOG4J_FORMAT_MSG_NO_LOOKUPS: "true"
+
+  zenserver:
+    image: zenserver
+    network_mode: host
+    container_name: zenserver
+    depends_on:
+      - zencore
+    environment:
+      TIME_ZONE: $TIME_ZONE
+      LOG4J_FORMAT_MSG_NO_LOOKUPS: "true"
+    command: "start"
+    volumes:
+     - type: volume
+       source: commonJars
+       target: /opt/microfocus/zenworks/java/lib
+     - type: volume
+       source: resources
+       target: /opt/microfocus/zenworks/resources
+     - type: bind
+       source: /opt/microfocus/zenworks/install
+       target: /opt/microfocus/zenworks/install
+     - type: bind
+       source: /opt/microfocus/zenworks/install/downloads/msi
+       target: /opt/microfocus/zenworks/install/downloads/msi
+     - type: bind
+       source: /opt/microfocus/zenworks/install/downloads/rpm
+       target: /opt/microfocus/zenworks/install/downloads/rpm
+     - type: volume
+       source: yum-repo
+       target: /var/opt/microfocus/zenworks/yum-repo
+     - type: bind
+       source: /opt/microfocus/zenworks/resources/zrs
+       target: /opt/microfocus/zenworks/resources/zrs
+     - type: bind
+       source: /var/opt/microfocus/zenworks
+       target: /var/opt/microfocus/zenworks
+     - type: bind
+       source: /var/opt/microfocus/zenworks/content-repo
+       target: /var/opt/microfocus/zenworks/content-repo
+     - type: bind
+       source: /var/opt/microfocus/zenworks/datamodel
+       target: /var/opt/microfocus/zenworks/datamodel
+     - type: bind
+       source: /var/opt/microfocus/zenworks/collection
+       target: /var/opt/microfocus/zenworks/collection
+     - type: bind
+       source: /var/opt/microfocus/zenworks/cache
+       target: /var/opt/microfocus/zenworks/cache
+     - type: bind
+       source: /var/opt/microfocus/zenworks/discovery
+       target: /var/opt/microfocus/zenworks/discovery
+     - type: bind
+       source: /var/opt/microfocus/zenworks/tmp
+       target: /var/opt/microfocus/zenworks/tmp
+     - type: bind
+       source: /etc/opt/microfocus/zenworks
+       target: /etc/opt/microfocus/zenworks
+     - type: bind
+       source: /var/tmp
+       target: /var/tmp
+     - type: bind
+       source: /var/opt/microfocus/log/zenworks
+       target: /var/opt/microfocus/log/zenworks
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/conf
+       target: /opt/microfocus/zenworks/share/tomcat/conf
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/logs
+       target: /opt/microfocus/zenworks/share/tomcat/logs
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-agent-addon
+       target: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-agent-addon
+     - type: bind
+       source: /opt/microfocus/zenworks/bin/zenserversettings.sh
+       target: /opt/microfocus/zenworks/bin/zenserversettings.sh
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks/WEB-INF/RtrletSetup.xml
+       target: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks/WEB-INF/RtrletSetup.xml
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks/WEB-INF/conf
+       target: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks/WEB-INF/conf
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-preboot/WEB-INF/config.xml
+       target: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-preboot/WEB-INF/config.xml
+     - type: bind
+       source: /etc/CASA/authtoken/svc
+       target: /etc/CASA/authtoken/svc
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/webapps/CasaAuthTokenSvc/WEB-INF/classes/casa_crypto.properties
+       target: /opt/microfocus/zenworks/share/tomcat/webapps/CasaAuthTokenSvc/WEB-INF/classes/casa_crypto.properties
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-unmaninv/umfilestore/prodkb/win32
+       target: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-unmaninv/umfilestore/prodkb/win32
+     - type: bind
+       source: /var/opt/microfocus/zenworks/unmanaged
+       target: /var/opt/microfocus/zenworks/unmanaged
+     - type: bind
+       source: /srv/tftp
+       target: /srv/tftp
+     - type: bind
+       source: /etc/group
+       target: /etc/group
+       read_only: true
+     - type: bind
+       source: /etc/passwd
+       target: /etc/passwd
+       read_only: true
+
+  zenloader:
+    image: zenloader
+    network_mode: host
+    container_name: zenloader
+    depends_on:
+      - zencore
+    environment:
+      TIME_ZONE: $TIME_ZONE
+      LOG4J_FORMAT_MSG_NO_LOOKUPS: "true"
+    logging:
+      driver: local
+    command: ""
+    volumes:
+     - type: volume
+       source: commonJars
+       target: /opt/microfocus/zenworks/java/lib
+     - type: volume
+       source: resources
+       target: /opt/microfocus/zenworks/resources
+     - type: bind
+       source: /opt/microfocus/zenworks/install
+       target: /opt/microfocus/zenworks/install
+     - type: bind
+       source: /opt/microfocus/zenworks/install/downloads/msi
+       target: /opt/microfocus/zenworks/install/downloads/msi
+     - type: bind
+       source: /opt/microfocus/zenworks/install/downloads/rpm
+       target: /opt/microfocus/zenworks/install/downloads/rpm
+     - type: volume
+       source: yum-repo
+       target: /var/opt/microfocus/zenworks/yum-repo
+     - type: volume
+       source: patchsignatures
+       target: /opt/microfocus/zenworks/zpm/signatures
+     - type: bind
+       source: /etc/opt/microfocus/zenworks
+       target: /etc/opt/microfocus/zenworks
+     - type: bind
+       source: /var/tmp
+       target: /var/tmp
+     - type: bind
+       source: /var/opt/microfocus/log/zenworks
+       target: /var/opt/microfocus/log/zenworks
+     - type: bind
+       source: /opt/microfocus/zenworks/bin/zenloadersettings.sh
+       target: /opt/microfocus/zenworks/bin/zenloadersettings.sh
+     - type: bind
+       source: /etc/CASA/authtoken/svc
+       target: /etc/CASA/authtoken/svc
+     - type: bind
+       source: /opt/novell/zenworks/preboot/bin/winutils
+       target: /opt/novell/zenworks/preboot/bin/winutils
+     - type: bind
+       source: /opt/novell/zenworks/java/lib
+       target: /opt/novell/zenworks/java/lib
+     - type: bind
+       source: /srv/tftp
+       target: /srv/tftp
+     - type: bind
+       source: /var/opt/microfocus/zenworks
+       target: /var/opt/microfocus/zenworks
+     - type: bind
+       source: /opt/microfocus/zenworks/bin/run_preglobal_update
+       target: /opt/microfocus/zenworks/bin/run_preglobal_update
+     - type: bind
+       source: /var/opt/novell/log/zenworks/
+       target: /var/opt/novell/log/zenworks/
+     - type: bind
+       source: /var/opt/novell/zenworks/
+       target: /var/opt/novell/zenworks/
+     - type: bind
+       source: /var/opt/microfocus/zenworks/discovery
+       target: /var/opt/microfocus/zenworks/discovery
+     - type: bind
+       source: /opt/microfocus/zenworks/zav
+       target: /opt/microfocus/zenworks/zav
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-agent-addon
+       target: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-agent-addon
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/conf/server.xml
+       target: /opt/microfocus/zenworks/share/tomcat/conf/server.xml
+       read_only: true
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/conf/osp-config
+       target: /opt/microfocus/zenworks/share/tomcat/conf/osp-config
+       read_only: true
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/conf/auth-filter-settings.json
+       target: /opt/microfocus/zenworks/share/tomcat/conf/auth-filter-settings.json
+       read_only: true
+     - type: bind
+       source: /etc/group
+       target: /etc/group
+       read_only: true
+     - type: bind
+       source: /etc/passwd
+       target: /etc/passwd
+     - type: bind
+       source: /opt/novell/zenworks/ZeUS/lib
+       target: /opt/novell/zenworks/ZeUS/lib
+       read_only: true
+     - type: bind
+       source: /var/opt/microfocus/zenworks/tmp/
+       target: /var/opt/microfocus/zenworks/tmp/
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-unmaninv/umfilestore/prodkb/win32
+       target: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks-unmaninv/umfilestore/prodkb/win32
+     - type: bind
+       source: /var/opt/microfocus/zenworks/unmanaged
+       target: /var/opt/microfocus/zenworks/unmanaged
+
+  antimalware:
+    image: antimalware    
+    container_name: antimalware
+    depends_on:
+      - zencore
+    environment:
+      TIME_ZONE: $TIME_ZONE
+      LOG4J_FORMAT_MSG_NO_LOOKUPS: "true"
+    command: "start"
+    network_mode: host
+    logging:
+       driver: local             
+    volumes:
+     - type: volume
+       source: resources
+       target: /opt/microfocus/zenworks/resources
+     - type: bind
+       source: /var/tmp
+       target: /var/tmp
+     - type: bind
+       source: /opt/microfocus/zenworks/bin
+       target: /opt/microfocus/zenworks/bin
+     - type: bind
+       source: /opt/microfocus/zenworks/share/tomcat/conf/server.xml
+       target: /opt/microfocus/zenworks/share/tomcat/conf/server.xml  
+     - type: bind
+       source: /opt/microfocus/zenworks/bin/antimalwaresettings.sh
+       target: /opt/microfocus/zenworks/bin/antimalwaresettings.sh
+     - type: bind
+       source: /opt/microfocus/zenworks/java/lib/zenjmxagent.jar
+       target: /opt/microfocus/zenworks/java/lib/zenjmxagent.jar
+     - type: bind
+       source: /var/opt/microfocus/log/zenworks
+       target: /var/opt/microfocus/log/zenworks
+     - type: bind
+       source: /etc/opt/microfocus/zenworks
+       target: /etc/opt/microfocus/zenworks
+     - type: bind
+       source: /var/opt/microfocus/zenworks
+       target: /var/opt/microfocus/zenworks
+     - type: bind
+       source: /etc/group
+       target: /etc/group
+       read_only: true
+     - type: bind
+       source: /etc/passwd
+       target: /etc/passwd
+       read_only: true
+
+  zenconfigure:
+      image: zenconfigure
+      network_mode: host
+      container_name: zenconfigure
+      depends_on:
+        - zencore
+      environment:
+        TIME_ZONE: $TIME_ZONE
+        LOG4J_FORMAT_MSG_NO_LOOKUPS: "true"
+      command: ""
+      volumes:
+       - type: volume
+         source: commonJars
+         target: /opt/microfocus/zenworks/java/lib
+       - type: volume
+         source: yum-repo
+         target: /var/opt/microfocus/zenworks/yum-repo
+       - type: bind
+         source: /opt/microfocus/zenworks/install
+         target: /opt/microfocus/zenworks/install
+       - type: bind
+         source: /opt/microfocus/zenworks/install/downloads/msi
+         target: /opt/microfocus/zenworks/install/downloads/msi
+       - type: bind
+         source: /opt/microfocus/zenworks/install/downloads/rpm
+         target: /opt/microfocus/zenworks/install/downloads/rpm
+       - type: bind
+         source: /etc/opt/microfocus/zenworks
+         target: /etc/opt/microfocus/zenworks
+       - type: bind
+         source: /etc/opt/novell/zenworks
+         target: /etc/opt/novell/zenworks
+       - type: bind
+         source: /var/opt/microfocus/zenworks
+         target: /var/opt/microfocus/zenworks
+       - type: bind
+         source: /var/opt/microfocus/log/zenworks
+         target: /var/opt/microfocus/log/zenworks
+       - type: bind
+         source: /opt/microfocus/zenworks/bin/zenserversettings.sh
+         target: /opt/microfocus/zenworks/bin/zenserversettings.sh
+       - type: bind
+         source: /opt/microfocus/zenworks/bin/zenloadersettings.sh
+         target: /opt/microfocus/zenworks/bin/zenloadersettings.sh
+       - type: bind
+         source: /opt/microfocus/zenworks/bin/zenconfiguresettings.sh
+         target: /opt/microfocus/zenworks/bin/zenconfiguresettings.sh
+       - type: bind
+         source: /opt/microfocus/zenworks/share/datamodel
+         target: /opt/microfocus/zenworks/share/datamodel
+       - type: bind
+         source: /opt/microfocus/zenworks/share/tomcat/webapps
+         target: /opt/microfocus/zenworks/share/tomcat/webapps
+       - type: bind
+         source: /opt/novell/zenworks
+         target: /opt/novell/zenworks
+       - type: bind
+         source: /var/opt/novell/zenworks
+         target: /var/opt/novell/zenworks
+       - type: bind
+         source: /var/opt/novell/log/zenworks
+         target: /var/opt/novell/log/zenworks
+       - type: bind
+         source: /var/tmp
+         target: /var/tmp
+       - type: bind
+         source: /opt/microfocus/zenworks/share/tomcat/conf
+         target: /opt/microfocus/zenworks/share/tomcat/conf
+       - type: bind
+         source: /etc/group
+         target: /etc/group
+         read_only: true
+       - type: bind
+         source: /etc/passwd
+         target: /etc/passwd
+         read_only: true
+       - type: bind
+         source: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks/WEB-INF/conf
+         target: /opt/microfocus/zenworks/share/tomcat/webapps/zenworks/WEB-INF/conf
+
+  zenzookeeper:
+    image: zenzookeeper
+    container_name: zenzookeeper
+    network_mode: host
+    environment:
+      TIME_ZONE: $TIME_ZONE
+      LOG4J_FORMAT_MSG_NO_LOOKUPS: "true"
+    volumes:
+      - type: bind
+        source: /var/opt/microfocus/log/zenworks
+        target: /logs
+      - type: bind
+        source: /var/opt/microfocus/zenworks/zookeeper
+        target: /data
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/zookeeper.properties
+        target: /conf/zoo.cfg
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/zookeeper-log4j.properties
+        target: /conf/log4j.properties
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/security/zenworks-jaas.conf
+        target: /etc/opt/microfocus/zenworks/security/zenworks-jaas.conf
+      - type: bind
+        source: /opt/microfocus/zenworks/bin/zenzookeeper.sh
+        target: /opt/microfocus/zenworks/bin/zenzookeeper.sh
+      - type: bind
+        source: /etc/group
+        target: /etc/group
+        read_only: true
+      - type: bind
+        source: /etc/passwd
+        target: /etc/passwd
+        read_only: true
+
+  zenkafka:
+    image: zenkafka
+    container_name: zenkafka
+    network_mode: host
+    environment:
+      TIME_ZONE: $TIME_ZONE
+    entrypoint: ./zenkafka-entry-script.sh
+    volumes:
+      - type: bind
+        source: /var/opt/microfocus/log/zenworks/kafka-logs
+        target: /var/log/kafka
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/kafka/zenworks-kafka-server.properties
+        target: /etc/kafka/server.properties
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/security/zenworks-jaas.conf
+        target: /etc/opt/microfocus/zenworks/security/zenworks-jaas.conf
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/security/server.keystore
+        target: /etc/opt/microfocus/zenworks/security/server.keystore
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/security/zenCaCertStore
+        target: /etc/opt/microfocus/zenworks/security/zenCaCertStore
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/kafka-log4j.properties
+        target: /etc/kafka/log4j.properties
+      - type: bind
+        source: /var/opt/microfocus/zenworks/kafka-data
+        target: /var/opt/microfocus/zenworks/kafka-data
+      - type: bind
+        source: /opt/microfocus/zenworks/bin/zenkafkasetting.sh
+        target: /opt/microfocus/zenworks/bin/zenkafkasetting.sh
+      - type: bind
+        source: /etc/group
+        target: /etc/group
+        read_only: true
+      - type: bind
+        source: /etc/passwd
+        target: /etc/passwd
+        read_only: true
+
+  zenkafka-schema-registry:
+     image: zenkafka
+     container_name: zenkafka-schema-registry
+     network_mode: host
+     environment:
+       TIME_ZONE: $TIME_ZONE
+     entrypoint: ./zenschemaregistry-entry-script.sh
+     depends_on:
+       - zenkafka
+     volumes:
+       - type: bind
+         source:  /etc/opt/microfocus/zenworks/kafka/zenworks-schema-registry.properties
+         target:  /etc/schema-registry/schema-registry.properties
+       - type: bind
+         source: /etc/opt/microfocus/zenworks/security/zenworks-jaas.conf
+         target: /etc/opt/microfocus/zenworks/security/zenworks-jaas.conf
+       - type: bind
+         source: /etc/opt/microfocus/zenworks/security/server.keystore
+         target: /etc/opt/microfocus/zenworks/security/server.keystore
+       - type: bind
+         source: /etc/opt/microfocus/zenworks/security/zenCaCertStore
+         target: /etc/opt/microfocus/zenworks/security/zenCaCertStore
+       - type: bind
+         source: /etc/opt/microfocus/zenworks/schema-log4j.properties
+         target: /etc/schema-registry/log4j.properties
+       - type: bind
+         source: /var/opt/microfocus/log/zenworks/kafka-logs/
+         target: /var/log/
+       - type: bind
+         source: /var/opt/microfocus/zenworks/kafka-data
+         target: /var/opt/microfocus/zenworks/kafka-data
+       - type: bind
+         source: /opt/microfocus/zenworks/bin/zenschemasetting.sh
+         target: /opt/microfocus/zenworks/bin/zenschemasetting.sh
+       - type: bind
+         source: /etc/group
+         target: /etc/group
+         read_only: true
+       - type: bind
+         source: /etc/passwd
+         target: /etc/passwd
+         read_only: true
+
+  zenkafka-connect:
+    image: zenkafka
+    container_name: zenkafka-connect
+    network_mode: host
+    environment:
+      TIME_ZONE: $TIME_ZONE
+    entrypoint: ./zenconnect-start.sh
+    depends_on:
+      - zenkafka
+      - zenkafka-schema-registry
+    volumes:
+      - type: bind
+        source:  /etc/opt/microfocus/zenworks/kafka/zenworks-connect-avro-distributed.properties
+        target:  /etc/schema-registry/connect-avro-distributed.properties
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/security/zenworks-jaas.conf
+        target: /etc/opt/microfocus/zenworks/security/zenworks-jaas.conf
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/security/server.keystore
+        target: /etc/opt/microfocus/zenworks/security/server.keystore
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/security/zenCaCertStore
+        target: /etc/opt/microfocus/zenworks/security/zenCaCertStore
+      - type: bind
+        source: /var/opt/microfocus/zenworks/kafka-data
+        target: /var/opt/microfocus/zenworks/kafka-data
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/connect-log4j.properties
+        target: /etc/kafka/connect-log4j.properties
+      - type: bind
+        source: /var/opt/microfocus/log/zenworks/kafka-logs/
+        target: /var/opt/microfocus/log/zenworks/kafka-logs
+      - type: bind
+        source: /opt/microfocus/zenworks/bin/zenconnectsetting.sh
+        target: /opt/microfocus/zenworks/bin/zenconnectsetting.sh
+      - type: bind
+        source: /etc/group
+        target: /etc/group
+        read_only: true
+      - type: bind
+        source: /etc/passwd
+        target: /etc/passwd
+        read_only: true
+
+  zenjoinproxy:
+    image: zenjoinproxy
+    container_name: zenjoinproxy
+    network_mode: host
+    environment:
+      TIME_ZONE: $TIME_ZONE
+      LOG4J_FORMAT_MSG_NO_LOOKUPS: "true"
+    command: "start"
+    volumes:
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/logging.properties
+        target: /etc/opt/microfocus/zenworks/logging.properties
+      - type: bind
+        source: /var/opt/microfocus/log/zenworks
+        target: /var/opt/microfocus/log/zenworks
+      - type: bind
+        source: /var/opt/microfocus/zenworks
+        target: /var/opt/microfocus/zenworks
+      - type: bind
+        source:  /etc/opt/microfocus/zenworks/joinproxy.properties
+        target:  /etc/opt/microfocus/zenworks/joinproxy.properties
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/joinproxy_config.properties
+        target: /etc/opt/microfocus/zenworks/joinproxy_config.properties
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/joinproxy_hostnamemap.xml
+        target: /etc/opt/microfocus/zenworks/joinproxy_hostnamemap.xml
+      - type: bind
+        source: /opt/microfocus/zenworks/bin/zenjoinproxysettings.sh
+        target: /opt/microfocus/zenworks/bin/zenjoinproxysettings.sh
+      - type: bind
+        source: /etc/opt/microfocus/zenworks/security
+        target: /etc/opt/microfocus/zenworks/security
+      - type: bind
+        source: /etc/group
+        target: /etc/group
+        read_only: true
+      - type: bind
+        source: /etc/passwd
+        target: /etc/passwd
+        read_only: true
+
+volumes:
+  commonJars:
+    name: commonJars
+  resources:
+    name: resources
+  yum-repo:
+    name: yum-repo
+  patchsignatures:
+    name: patchsignatures
